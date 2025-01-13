@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
+    "whitenoise.runserver_nostatic",
     "coreapi",
     'tasks',
     'auths',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -143,9 +145,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "blog/static"),
 ]
 
-ALLOWED_HOSTS = ['web-production-b52b.up.railway.app']
+STORAGES = {
+    
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
+ALLOWED_HOSTS = ['localhost', 'web-production-b52b.up.railway.app']
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # REST Framework settings
 REST_FRAMEWORK = {
