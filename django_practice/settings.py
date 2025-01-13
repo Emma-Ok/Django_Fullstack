@@ -143,6 +143,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "blog/static"),
 ]
 
+ALLOWED_HOSTS = ['web-production-b52b.up.railway.app']
+
 
 
 # REST Framework settings
