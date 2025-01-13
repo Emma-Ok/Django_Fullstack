@@ -90,7 +90,6 @@ WSGI_APPLICATION = "django_practice.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-print("DATABASE_URL:", os.getenv("DATABASE_URL"))
 
 DATABASES = {
     "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
